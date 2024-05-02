@@ -1,8 +1,28 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { login, logout } from "./frachers/Auth/AuthSlice";
+import authServices from "./Appwrite/Auth";
+
 function App() {
-  return (
-    <h1 className="text-3xl text-red-800 font-bold underline">
-      Hello world!
-    </h1>
+  const [Loding, setLoding] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    authServices
+      .getCurrentUser()
+      .then((userData) => {
+        
+        userData ? dispatch(login({ userData })) : dispatch(logout());
+      })
+      .finally(() => setLoding(false));
+  }, []);
+
+  return !Loding ? (
+    <>
+      <h1>hii from blog</h1>
+    </>
+  ) : (
+    <div>Loding</div>
   );
 }
 
