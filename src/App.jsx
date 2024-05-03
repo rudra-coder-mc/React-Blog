@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./frachers/Auth/AuthSlice";
 import authServices from "./Appwrite/Auth";
+import { RouterProvider } from "react-router-dom";
+import router from "./Routes/router";
 
 function App() {
   const [Loding, setLoding] = useState(true);
@@ -11,7 +13,6 @@ function App() {
     authServices
       .getCurrentUser()
       .then((userData) => {
-        
         userData ? dispatch(login({ userData })) : dispatch(logout());
       })
       .finally(() => setLoding(false));
@@ -19,7 +20,7 @@ function App() {
 
   return !Loding ? (
     <>
-      <h1>hii from blog</h1>
+      <RouterProvider router={router} />
     </>
   ) : (
     <div>Loding</div>
