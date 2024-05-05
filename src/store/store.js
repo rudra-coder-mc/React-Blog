@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import AuthReducer from "../frachers/Auth/AuthSlice";
+import Auth from "../frachers/Auth/AuthSlice";
+import Theme from "../frachers/Theme/ThemeSlice";
 
 const store = configureStore({
-  reducer: AuthReducer,
+  reducer: { Auth, Theme },
 });
 
 export default store;
