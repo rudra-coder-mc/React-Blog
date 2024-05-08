@@ -1,9 +1,6 @@
-import React, { useId, forwardRef } from "react";
+import { useId, forwardRef } from "react";
 
-const Input = forwardRef(function Input(
-  { label, type = "text", className = "", ...props },
-  ref
-) {
+const Input = ({ label, type = "text", className = "", ...props }, ref) => {
   const id = useId();
   return (
     <div className="w-full">
@@ -21,6 +18,6 @@ const Input = forwardRef(function Input(
       />
     </div>
   );
-});
+};
 
-export default Input;
+export default forwardRef(Input);

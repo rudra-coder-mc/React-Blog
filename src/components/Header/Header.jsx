@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Logo, Container, LogoutBtn, Button } from "../";
+import { Logo, Container, Button } from "../";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -9,8 +9,8 @@ import { ThemeMode } from "../../frachers/Theme/ThemeSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const authStatus = useSelector((state) => state.Auth.status);
-  const authStatus = true;
+  const authStatus = useSelector((state) => state.Auth.status);
+  // const authStatus = true;
   // console.log(authStatus);
 
   const handelThemeMode = (e) => {
@@ -108,19 +108,18 @@ const Header = () => {
                 <span className="sr-only">Switch to light / dark version</span>
               </label>
             </div>
-            <div className="hidden lg:block ml-2">
-              {!authStatus ? (
-                AuthItem.map((Item) => (
-                  <div className="hidden lg:block ml-2">
-                    <Button>
-                      <Link to={Item.slug}>{Item.name}</Link>
-                    </Button>
-                  </div>
-                ))
-              ) : (
-                <Button>LogOut</Button>
-              )}
-            </div>
+
+            {!authStatus ? (
+              AuthItem.map((Item) => (
+                <div className="hidden lg:block ml-2" key={Item.name}>
+                  <Link to={Item.slug}>
+                    <Button>{Item.name} </Button>
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <Button>LogOut</Button>
+            )}
 
             <div className="lg:hidden">
               <svg
