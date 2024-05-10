@@ -7,5 +7,20 @@ import Input from "./Input";
 import Signup from "./Signup";
 import Button from "./Button";
 import Login from "./Login";
+import PostForm from "./PostForm";
+import RTE from "./RTE.jsx";
+import Select from "./Select";
 
-export { Header, Footer, Container, Logo, Button, Input, Login, Signup };
+export {
+  Header,
+  Footer,
+  Container,
+  Logo,
+  Button,
+  Input,
+  Login,
+  Signup,
+  PostForm,
+  RTE,
+  Select,
+};

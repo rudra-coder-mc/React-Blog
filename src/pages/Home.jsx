@@ -1,7 +1,12 @@
 import React from "react";
+import { PostForm } from "./";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <PostForm />
+    </div>
+  );
 };
 
 export default Home;
