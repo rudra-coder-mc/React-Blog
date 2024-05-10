@@ -1,4 +1,4 @@
-import { Client, Databases, ID } from "appwrite";
+import { Client, Databases, ID, Query } from "appwrite";
 import conf from "../conf/conf";
 
 export class BlogServices {
@@ -51,7 +51,7 @@ export class BlogServices {
     }
   }
 
-  async deletePost({ slug }) {
+  async deletePost(slug) {
     try {
       return await this.databases.deleteDocument(
         conf.appwriteDatabaseId,
@@ -64,7 +64,8 @@ export class BlogServices {
     }
   }
 
-  async getPost({ slug }) {
+  async getPost(slug) {
+    // console.log(slug);
     try {
       return await this.databases.getDocument(
         conf.appwriteDatabaseId,
@@ -77,7 +78,7 @@ export class BlogServices {
     }
   }
 
-  async getPoosts(queries = [Query.equal("status", "active")]) {
+  async getPosts(queries = [Query.equal("status", "active")]) {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,

@@ -10,6 +10,7 @@ import Login from "./Login";
 import PostForm from "./PostForm";
 import RTE from "./RTE.jsx";
 import Select from "./Select";
+import Card from "./Card.jsx";
 
 export {
   Header,
@@ -23,4 +24,5 @@ export {
   PostForm,
   RTE,
   Select,
+  Card,
 };

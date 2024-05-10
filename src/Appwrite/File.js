@@ -11,12 +11,13 @@ export class FileServices {
     this.storage = new Storage(this.client);
   }
 
-  async uploadFile({ file }) {
+  async uploadFile(File) {
+    // console.log(File);
     try {
       return await this.storage.createFile(
         conf.appwriteBucketId,
         ID.unique(),
-        file
+        File
       );
     } catch (error) {
       console.log("AppWrite :: createFile :: error  ", error);

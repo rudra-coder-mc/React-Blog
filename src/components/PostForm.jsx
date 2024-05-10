@@ -9,6 +9,7 @@ import blogServices from "../Appwrite/Blog";
 import { useEffect, useState, useCallback } from "react";
 
 const PostForm = ({ post }) => {
+  // console.log(post);
   const navigate = useNavigate();
 
   useEffect;
@@ -26,7 +27,7 @@ const PostForm = ({ post }) => {
   const userData = useSelector((state) => state.Auth.userData);
   //   console.log(userData)
 
-  const Submit = async ({ data }) => {
+  const Submit = async (data) => {
     if (post) {
       const file = data.image[0]
         ? await fileServices.uploadFile(data.image[0])
@@ -44,6 +45,7 @@ const PostForm = ({ post }) => {
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
+      // console.log(data.image[0]);
       const file = data.image[0]
         ? await fileServices.uploadFile(data.image[0])
         : null;
@@ -77,10 +79,20 @@ const PostForm = ({ post }) => {
         // console.log(slugTransform(value.title));
         setValue("slug", slugTransform(value.title), { shouldValidate: true });
       }
+      return "";
     });
 
     return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
+
+  useEffect(() => {
+    if (post) {
+      setValue("title", post?.title || "", { shouldValidate: true });
+      setValue("slug", post?.$id || "", { shouldValidate: true });
+      setValue("content", post?.content || "", { shouldValidate: true });
+      setValue("status", post?.status || "", { shouldValidate: true });
+    }
+  }, [post]);
 
   return (
     <Container>

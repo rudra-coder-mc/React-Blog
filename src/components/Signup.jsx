@@ -23,6 +23,7 @@ const Signup = () => {
     try {
       const Data = await authServices.createAccount(data);
       if (Data) {
+        console.log("log from signup from componentes", Data);
         const userData = await authServices.getCurrentUser();
         if (userData) dispatch(login(userData));
         navigate("/");
