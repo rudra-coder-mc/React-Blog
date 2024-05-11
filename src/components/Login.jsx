@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../frachers/Auth/AuthSlice";
 import { Button, Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
-import authService from "../Appwrite/Auth";
+import authServices from "../Appwrite/Auth";
 
 import { useForm } from "react-hook-form";
 
@@ -20,10 +20,13 @@ function Login() {
   const login = async (data) => {
     setError("");
     try {
-      const session = await authService.Login(data);
+      const session = await authServices.Login(data);
+      // console.log(session);
       if (session) {
-        const userData = await authService.getCurrentUser();
+        const userData = await authServices.getCurrentUser();
+        // console.log(userData);
         if (userData) dispatch(authLogin(userData));
+
         navigate("/");
       }
     } catch (error) {

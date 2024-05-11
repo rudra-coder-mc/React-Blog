@@ -8,7 +8,7 @@ function Home() {
   useEffect(() => {
     blogServices.getPosts().then((posts) => {
       if (posts) {
-        console.log("log from Home.jsx ::", posts);
+        // console.log("log from Home.jsx ::", posts);
         setPosts(posts.documents);
       }
     });
@@ -16,8 +16,8 @@ function Home() {
 
   if (posts.length === 0) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
-        <Container>
+      <div className="w-full   my-1 text-center">
+        <Container className="h-dvh">
           <div className="flex flex-wrap">
             <div className="p-2 w-full">
               <h1 className="text-2xl font-bold hover:text-gray-500">
@@ -30,8 +30,8 @@ function Home() {
     );
   }
   return (
-    <div className="w-full py-8">
-      <Container>
+    <div className="w-full  my-1">
+      <Container className="h-dvh">
         <div className="flex flex-wrap">
           {posts.map((post) => (
             <div key={post.$id} className="p-2 w-1/4">

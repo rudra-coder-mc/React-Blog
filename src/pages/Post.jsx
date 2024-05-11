@@ -25,9 +25,9 @@ export default function Post() {
   }, [slug, navigate]);
 
   const deletePost = () => {
-    fileServices.deletePost(post.$id).then((status) => {
+    blogServices.deletePost(post.$id).then((status) => {
       if (status) {
-        blogServices.deleteFile(post.featuredImage);
+        fileServices.deleteFile(post.featuredImage);
         navigate("/");
       }
     });

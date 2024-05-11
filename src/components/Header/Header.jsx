@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Logo, Container, Button } from "../";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ThemeMode } from "../../frachers/Theme/ThemeSlice";
+import { logout } from "../../frachers/Auth/AuthSlice";
+import authServices from "../../Appwrite/Auth";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,11 @@ const Header = () => {
 
   const handelThemeMode = (e) => {
     dispatch(ThemeMode());
+  };
+  const logoutHandler = () => {
+    authServices.Logout().then(() => {
+      dispatch(logout());
+    });
   };
 
   const navItems = [
@@ -118,7 +124,7 @@ const Header = () => {
                 </div>
               ))
             ) : (
-              <Button>LogOut</Button>
+              <Button onClick={logoutHandler}>LogOut</Button>
             )}
 
             <div className="lg:hidden">
