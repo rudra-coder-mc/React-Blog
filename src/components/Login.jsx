@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [Loding, setLoding] = useState(false);
   const {
     register,
     handleSubmit,
@@ -19,6 +20,7 @@ function Login() {
 
   const login = async (data) => {
     setError("");
+    setLoding(true);
     try {
       const session = await authServices.Login(data);
       // console.log(session);
@@ -29,7 +31,9 @@ function Login() {
 
         navigate("/");
       }
+      setLoding(false);
     } catch (error) {
+      setLoding(false);
       setError(error.message);
     }
   };
@@ -72,6 +76,7 @@ function Login() {
                 },
               })}
             />
+            <p>demo account Email : forcoding111@gmail.com</p>
             <p>{errors.email?.message}</p>
             <Input
               label="Password: "
@@ -82,9 +87,10 @@ function Login() {
                 minLength: 6,
               })}
             />
+            <p>demo account Password : forcoding111</p>
             <p>{errors.password?.message}</p>
             <Button type="submit" className="w-full">
-              Sign in
+              {Loding ? "Loding..." : " Sign in"}
             </Button>
           </div>
         </form>

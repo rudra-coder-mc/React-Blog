@@ -10,6 +10,7 @@ import { login } from "../frachers/Auth/AuthSlice";
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [Loding, setLoding] = useState(false);
 
   const [Error, setError] = useState("");
   const {
@@ -20,6 +21,7 @@ const Signup = () => {
 
   const create = async (data) => {
     setError("");
+    setLoding(true);
     try {
       const Data = await authServices.createAccount(data);
       if (Data) {
@@ -28,7 +30,9 @@ const Signup = () => {
         if (userData) dispatch(login(userData));
         navigate("/");
       }
+      setLoding(false);
     } catch (error) {
+      setLoding(false);
       setError(error.message);
     }
   };
@@ -93,6 +97,7 @@ const Signup = () => {
             <p>{errors.password?.message}</p>
             <Button type="submit" className="w-full">
               Create Account
+              {Loding ? "Loding..." : "Create Account"}
             </Button>
           </div>
         </form>
