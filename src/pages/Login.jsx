@@ -1,11 +1,11 @@
 import React from "react";
-import { Login as LoginComponent } from "../components";
+import { Login as LoginComponent, Container } from "../components";
 
 const Login = () => {
   return (
-    <div className="py-8">
+    <Container className="h-dvh pt-28">
       <LoginComponent />
-    </div>
+    </Container>
   );
 };
 

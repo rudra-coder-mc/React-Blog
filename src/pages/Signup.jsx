@@ -1,11 +1,11 @@
 import React from "react";
-import { Signup as SignupComponent } from "../components";
+import { Signup as SignupComponent, Container } from "../components";
 
 const Signup = () => {
   return (
-    <div className="py-8">
+    <Container className="h-dvh pt-28">
       <SignupComponent />
-    </div>
+    </Container>
   );
 };
 
