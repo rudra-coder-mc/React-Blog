@@ -1,17 +1,8 @@
-import React, { useState, useEffect } from "react";
-import blogServices from "../Appwrite/Blog";
 import { Container, Card } from "../components";
+import { useSelector } from "react-redux";
 
 const AllPost = () => {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    blogServices.getPosts([]).then((posts) => {
-      if (posts) {
-        // console.log("log from AllPost.jsx ::", posts);
-        setPosts(posts.documents);
-      }
-    });
-  }, []);
+  const posts = useSelector((state) => state.Blog.Bolgs);
 
   return (
     <div className="w-full my-1">

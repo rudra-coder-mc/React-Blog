@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from "react";
-import blogServices from "../Appwrite/Blog";
 import { Container, Card } from "../components";
+import { useSelector } from "react-redux";
 
 function Home() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    blogServices.getPosts().then((posts) => {
-      if (posts) {
-        // console.log("log from Home.jsx ::", posts);
-        setPosts(posts.documents);
-      }
-    });
-  }, []);
+  const posts = useSelector((state) => state.Blog.Bolgs);
+  // console.log(posts);
 
   if (posts.length === 0) {
     return (

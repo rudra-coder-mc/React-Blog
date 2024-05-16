@@ -4,11 +4,12 @@ import { login, logout } from "./frachers/Auth/AuthSlice";
 import authServices from "./Appwrite/Auth";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routes/router";
+import useBlogData from "./Utility/useBlogData";
 
 function App() {
   const [Loding, setLoding] = useState(true);
   const dispatch = useDispatch();
-
+  useBlogData();
   useEffect(() => {
     authServices
       .getCurrentUser()
