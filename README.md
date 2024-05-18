@@ -1,6 +1,6 @@
 # react Blog
 
-- a blog web site that can be used for create ,edite ,delete and read blog
+- A blog website that can be used to create, edit, delete and read blog
 
 # technology
 
