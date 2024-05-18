@@ -47,6 +47,7 @@ This project is a blogging platform built using React on the frontend and Appwri
 1. Set up an account with Appwrite and create a new project.
 2. Obtain your Appwrite project API keys.
 3. Configure the frontend to use your Appwrite API keys.
+4. configur the .env.sample file to .env and fill all with Appwrite keys
 
 ## Running the Application
 
